@@ -1,0 +1,66 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+	<title>Andrew Greenslades UI Project</title>
+		<meta
+		name="description"           
+		content="Andrews PWA game page">
+		<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+		<link rel="stylesheet" href="./css/push.css">
+		<link rel="manifest" href="./manifest.json">
+		
+		<link rel="apple-touch-icon" href="./Img/icons/192_192.png">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="AndrewG PWA (Progressive Web Application)">
+		
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="mobile-web-app-status-bar-style" content="black">
+		<meta name="mobile-web-app-title" content="AndrewG PWA (Progressive Web Application)">
+		
+		<meta name="msapplication-TileImage" content="./Img/icons/192_192.png">
+		<meta name="msapplication-TileColor" content="#FFFFFF">
+		
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+		<meta name="theme-color" content="#FFFFFF"/>
+</head>
+
+<body onload="onPageLoad()">
+	<h1 id="WelcomeName"> </h1>
+	<h1 id="HUD"> </h1>
+
+	<canvas tabindex="0" id="game" width="900" height="700" style="border: black 1px solid;">
+        Oops! looks like your browser does not support canvas tag
+    </canvas>
+	<br>
+	
+	<audio id="sound">   
+		<source src="audio/ButtonPress.mp3">   
+		Your browser does not support the audio element.
+	</audio> 
+
+    <table class="CenterAlign">
+        <tbody>
+            <tr>
+                <td><button onmousedown="FirstAttackButton()" onclick="playButtonClick()" id="FirstAttackButton" class="button RedOne">Attack One</button></td>
+                <td><button onmousedown="SecondAttackButton()" onclick="playButtonClick()" id="SecondAttackButton" class="button RedTwo">Attack Two</button></td>
+                <td><button onmousedown="ThirdAttackButton()" onclick="playButtonClick()" id="ThirdAttackButton" class="button RedThree">Attack Three</button></td>
+            </tr>
+			<tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+				<td>&nbsp;</td>
+            </tr>
+            <tr>
+			    <td>&nbsp;</td>
+                <td><button onmousedown="HealButton()" onclick="playButtonClick()" id="HealButton" class="button Green CenterAlignButton">Heal</button></td>
+   			    <td>&nbsp;</td>
+			</tr>
+        </tbody>
+    </table>
+</body>
+
+<script src="./js/script.js"></script>
+
+</html>

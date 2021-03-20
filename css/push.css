@@ -1,0 +1,78 @@
+@media only screen and (max-width: 600px) {
+	#game{
+		width:90%;
+		height:70%;
+	}
+	
+	body{
+		padding-top: 50%;
+		position: relative;
+		display: table-cell;
+		vertical-align: bottom;
+	}
+}
+
+.button {
+    background-color: #61584C;
+    box-shadow: 0 9px #505050;
+	height: 75px;
+	width: 350px;
+    font-size: 28px;
+	border-radius: 12px;
+}
+
+.button:hover {
+    background-color: #3F3F3F;
+}
+
+.button:active {
+    box-shadow: 0 5px #3D3D3D;
+    transform: translateY(5px);
+}
+
+.Green {
+	color: #50F566;
+}
+.RedThree {
+    color: #F5829C;
+}
+
+.RedTwo {
+	color: #FF403C;
+}
+
+.RedOne {
+    color: #D40C00;
+}
+
+.CenterAlign {
+	display: inline-flex;
+	align-items:center;
+}
+
+.CenterAlignButton {
+	align-items:center;
+	text-align:center;
+}
+
+input[type=radio] {
+    height: 20px;
+}
+
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body{
+	background-color: #C7B29B;
+	color:#61584C;
+	font-family: Papyrus, fantasy;
+	text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
