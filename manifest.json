@@ -38,5 +38,5 @@
     "display": "minimal-ui",
     "orientation": "landscape",
     "scope": "/",
-    "start_url": "https://andrewgreenslade.github.io/UI-PROG-UI-PROJECT/"
+    "start_url": "index.html"
 }
