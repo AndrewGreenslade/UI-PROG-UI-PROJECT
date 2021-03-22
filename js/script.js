@@ -9,6 +9,11 @@ var FirstName = params.get("fname");
 var SecondName = params.get("lname");
 var weaponOfChoice = params.get("TYPE");
 
+var playerhealth = 100;
+var enemyHealth = 100;
+
+var gameover = false;
+
 function WelcomeText() 
 {
 	document.getElementById("WelcomeName").innerHTML = "Welcome : " + FirstName + " " + SecondName;
@@ -19,6 +24,16 @@ function WelcomeText()
 var canvas = document.getElementById("game");
 // get 2D context for this canvas
 var context = canvas.getContext("2d");
+context.font = "25px Comic Sans MS";
+
+
+var playerChar = new Image();
+var EnemyChar = new Image();
+var BGImage = new Image();
+
+playerChar.src = "./Img/stickman.png";
+EnemyChar.src = "./Img/Enemy stickman.png";
+BGImage.src = "./Img/WinScreen.png";
 
 //diffrent button on mouse up event listiners
 document.getElementById("FirstAttackButton").onmouseup = function() {ButtonUp()};
@@ -40,14 +55,31 @@ document.getElementById("HealButton").addEventListener("touchend", ButtonUp, {pa
 
 var mySound = document.getElementById("sound");   
 
-function FirstAttackButton(){
+function FirstAttackButton()
+{
+	if(enemyHealth > 0)
+	{
+		enemyHealth = enemyHealth - 10;
+		playerhealth = playerhealth - 5;
+	}
 }
 
-function SecondAttackButton(){
+function SecondAttackButton()
+{
+	if(enemyHealth > 0)
+	{
+		enemyHealth = enemyHealth - 20;
+		playerhealth = playerhealth - 10;
+	}
 }
 
 function ThirdAttackButton()
 {
+	if(enemyHealth > 0)
+	{
+		enemyHealth = enemyHealth - 30;
+		playerhealth = playerhealth - 15;
+	}
 }
 
 function DownbuttonOnClick(){
@@ -58,15 +90,65 @@ function ButtonUp(){
 
 function update()
 {
-	
+	if(enemyHealth < 1)
+	{
+		gameover = true;
+	}
+}
+
+function drawPlayerHealthbar()
+{
+  var width = 300;
+  var height = 50;
+  var max = 100;
+  var val = playerhealth;
+
+  // Draw the fill
+  context.fillStyle = "#00FF00";
+  var fillVal = Math.min(Math.max(val / max, 0), 1);
+  context.fillRect(550,625, fillVal * width, height);
+}
+
+function drawEnemyHealthbar()
+{
+  var width = 300;
+  var height = 50;
+  var max = 100;
+  var val = enemyHealth;
+
+  // Draw the fill
+  context.fillStyle = "#FF0000";
+  var fillVal = Math.min(Math.max(val / max, 0), 1);
+  context.fillRect(25,25, fillVal * width, height);
+
 }
 
 // Draw GameObjects to Console
 // Modify to Draw to Screen
 function draw()
 {
-    
+	context.clearRect(0, 0, canvas.width, canvas.height);
+
+	if(gameover === false)
+	{
+		context.drawImage(playerChar,500,300);
+		
+		context.drawImage(EnemyChar,0,25);
+		
+		context.fillStyle = "red";
+		context.fillText("Enemy Health:", 25, 100);
+		context.fillStyle = "green";
+		context.fillText("Player Health:", 550, 600);
+		
+		drawPlayerHealthbar();
+		drawEnemyHealthbar();
+	}
+	else
+	{
+		context.drawImage(BGImage,0,0);
+	}
 }
+
 //gameplay loop
 function gameloop()
 {
@@ -88,6 +170,10 @@ function playButtonClick()
 	{
 		mySound.currentTime = 0;
 	}
+}
+
+function HealButton(){
+	
 }
 
 // Handle Active Browser Tag Animation
