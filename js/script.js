@@ -11,7 +11,7 @@ var weaponOfChoice = params.get("TYPE");
 
 var playerhealth = 100;
 var enemyHealth = 100;
-
+var healAmount = 25; 
 var gameover = false;
 
 function WelcomeText() 
@@ -137,9 +137,9 @@ function draw()
 		
 		context.fillStyle = "red";
 		context.fillText("Enemy Health:", 25, 100);
-		context.fillStyle = "green";
+		context.fillStyle = "#00FF00";
 		context.fillText("Player Health:", 550, 600);
-		
+		context.fillText("Heal Amount: " + healAmount, 550, 550);
 		drawPlayerHealthbar();
 		drawEnemyHealthbar();
 	}
@@ -172,8 +172,16 @@ function playButtonClick()
 	}
 }
 
-function HealButton(){
-	
+function HealButton()
+{
+	if(playerhealth + healAmount < 100)
+	{
+		playerhealth = playerhealth + healAmount;
+		
+		if(healAmount > 4){
+			healAmount = healAmount - 5;
+		}
+	}
 }
 
 // Handle Active Browser Tag Animation
