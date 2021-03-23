@@ -12,7 +12,14 @@ var weaponOfChoice = params.get("TYPE");
 var playerhealth = 100;
 var enemyHealth = 100;
 var healAmount = 25; 
+
 var gameover = false;
+var playersTurn = true;
+var playerchoice = 0;
+
+var initial = new Date().getTime();
+var current; // current time
+var isTimeCaptured = false;
 
 function WelcomeText() 
 {
@@ -57,43 +64,107 @@ var mySound = document.getElementById("sound");
 
 function FirstAttackButton()
 {
-	if(enemyHealth > 0)
+	if(playersTurn === true)
 	{
-		enemyHealth = enemyHealth - 10;
-		playerhealth = playerhealth - 5;
+		if(enemyHealth > 0)
+		{
+			enemyHealth = enemyHealth - 10;
+			playersTurn = false;
+			playerchoice = 1;
+			//playerhealth = playerhealth - 5;
+		}
 	}
 }
 
 function SecondAttackButton()
 {
-	if(enemyHealth > 0)
+	if(playersTurn === true)
 	{
-		enemyHealth = enemyHealth - 20;
-		playerhealth = playerhealth - 10;
+		if(enemyHealth > 0)
+		{
+			enemyHealth = enemyHealth - 20;
+			playersTurn = false;
+			playerchoice = 2;
+			//playerhealth = playerhealth - 10;
+		}
 	}
 }
 
 function ThirdAttackButton()
 {
-	if(enemyHealth > 0)
+	if(playersTurn === true)
 	{
-		enemyHealth = enemyHealth - 30;
-		playerhealth = playerhealth - 15;
+		if(enemyHealth > 0)
+		{
+			enemyHealth = enemyHealth - 30;
+			playersTurn = false;
+			playerchoice = 3;
+			//playerhealth = playerhealth - 15;
+		}
 	}
 }
 
-function DownbuttonOnClick(){
+function DownbuttonOnClick()
+{
 }
 
-function ButtonUp(){
+function ButtonUp()
+{
+	
 }
+
+function EnemyUpdate()
+{
+	if(playerchoice === 1)
+	{
+		playerhealth = playerhealth - 2;
+		playersTurn = true;
+	}
+	else
+	if(playerchoice === 2)
+	{
+		playerhealth = playerhealth - 5;
+		playersTurn = true;
+	}
+	else
+	if(playerchoice === 3)
+	{
+		playerhealth = playerhealth - 10;
+		playersTurn = true;
+	}
+	
+	initial = current;
+}
+
 
 function update()
 {
+	if(playersTurn === false)
+	{
+		if(isTimeCaptured === false)
+		{
+			initial = 	new Date().getTime();
+			isTimeCaptured = true;
+		}
+		
+		current = new Date().getTime(); // update current
+		
+		if (current - initial >= 3000)
+		{
+			if(enemyHealth > 0)
+			{
+				EnemyUpdate();
+			}
+			
+
+		}
+	}
+	
 	if(enemyHealth < 1)
 	{
 		gameover = true;
 	}
+
 }
 
 function drawPlayerHealthbar()
@@ -127,6 +198,9 @@ function drawEnemyHealthbar()
 // Modify to Draw to Screen
 function draw()
 {
+	context.textAlign = "left";
+
+	
 	context.clearRect(0, 0, canvas.width, canvas.height);
 
 	if(gameover === false)
@@ -142,6 +216,14 @@ function draw()
 		context.fillText("Heal Amount: " + healAmount, 550, 550);
 		drawPlayerHealthbar();
 		drawEnemyHealthbar();
+		
+		if(playersTurn === false)
+		{
+			context.fillStyle = "#000000";
+			context.textAlign = "center";
+			context.fillText("ENEMYS TURN", 450,300 );
+			context.fillText(Math.trunc(4 - ((current - initial) / 1000)), 450, 350);
+		}
 	}
 	else
 	{
