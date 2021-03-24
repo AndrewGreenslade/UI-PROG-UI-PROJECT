@@ -119,18 +119,21 @@ function EnemyUpdate()
 	{
 		playerhealth = playerhealth - 2;
 		playersTurn = true;
+		isTimeCaptured = false;
 	}
 	else
 	if(playerchoice === 2)
 	{
 		playerhealth = playerhealth - 5;
 		playersTurn = true;
+		isTimeCaptured = false;
 	}
 	else
 	if(playerchoice === 3)
 	{
 		playerhealth = playerhealth - 10;
 		playersTurn = true;
+		isTimeCaptured = false;
 	}
 	
 	initial = current;
