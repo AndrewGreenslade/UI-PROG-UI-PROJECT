@@ -1,6 +1,6 @@
 function onPageLoad() 
 {
-	
+	UpdateButtons();
 }
 
 var queryString = window.location.search;
@@ -15,11 +15,13 @@ var healAmount = 25;
 
 var gameover = false;
 var playersTurn = true;
-var playerchoice = 0;
 
 var initial = new Date().getTime();
 var current; // current time
 var isTimeCaptured = false;
+
+var EnemyAttackChoice = 0;
+var PlayerChoiceRandomVal = 0;
 
 function WelcomeText() 
 {
@@ -68,10 +70,19 @@ function FirstAttackButton()
 	{
 		if(enemyHealth > 0)
 		{
-			enemyHealth = enemyHealth - 10;
-			playersTurn = false;
-			playerchoice = 1;
-			//playerhealth = playerhealth - 5;
+			PlayerChoiceRandomVal = Math.floor((Math.random() * 100) + 1);
+			
+			if(PlayerChoiceRandomVal <= 75)
+			{
+				enemyHealth = enemyHealth - 10;
+				document.getElementById("TurnHUD").innerHTML = "Enemy's Turn";
+				playersTurn = false;
+			}
+			else
+			{
+				document.getElementById("TurnHUD").innerHTML = "You missed, Enemy's Turn";			
+				playersTurn = false;
+			}
 		}
 	}
 }
@@ -82,10 +93,19 @@ function SecondAttackButton()
 	{
 		if(enemyHealth > 0)
 		{
-			enemyHealth = enemyHealth - 20;
-			playersTurn = false;
-			playerchoice = 2;
-			//playerhealth = playerhealth - 10;
+			PlayerChoiceRandomVal = Math.floor((Math.random() * 100) + 1);
+
+			if(PlayerChoiceRandomVal <= 50)
+			{	
+				enemyHealth = enemyHealth - 20;
+				document.getElementById("TurnHUD").innerHTML = "Enemy's Turn";
+				playersTurn = false;
+			}
+			else
+			{
+				document.getElementById("TurnHUD").innerHTML = "You missed, Enemy's Turn";			
+				playersTurn = false;
+			}
 		}
 	}
 }
@@ -96,10 +116,18 @@ function ThirdAttackButton()
 	{
 		if(enemyHealth > 0)
 		{
-			enemyHealth = enemyHealth - 30;
-			playersTurn = false;
-			playerchoice = 3;
-			//playerhealth = playerhealth - 15;
+			PlayerChoiceRandomVal = Math.floor((Math.random() * 100) + 1);
+			if(PlayerChoiceRandomVal <= 40)
+			{
+				enemyHealth = enemyHealth - 30;
+				document.getElementById("TurnHUD").innerHTML = "Enemy's Turn";				
+				playersTurn = false;
+			}
+			else
+			{
+				document.getElementById("TurnHUD").innerHTML = "You missed, Enemy's Turn";							
+				playersTurn = false;
+			}
 		}
 	}
 }
@@ -115,23 +143,51 @@ function ButtonUp()
 
 function EnemyUpdate()
 {
-	if(playerchoice === 1)
-	{
-		playerhealth = playerhealth - 2;
-		playersTurn = true;
-		isTimeCaptured = false;
-	}
-	else
-	if(playerchoice === 2)
+	EnemyAttackChoice = Math.floor((Math.random() * 5) + 1);
+	
+	if(EnemyAttackChoice === 1)
 	{
 		playerhealth = playerhealth - 5;
+		document.getElementById("TurnHUD").innerHTML = "Your Turn";			
 		playersTurn = true;
 		isTimeCaptured = false;
 	}
 	else
-	if(playerchoice === 3)
+	if(EnemyAttackChoice === 2)
 	{
 		playerhealth = playerhealth - 10;
+		document.getElementById("TurnHUD").innerHTML = "Your Turn";			
+		playersTurn = true;
+		isTimeCaptured = false;
+	}
+	else
+	if(EnemyAttackChoice === 3)
+	{
+		playerhealth = playerhealth - 15;
+		document.getElementById("TurnHUD").innerHTML = "Your Turn";			
+		playersTurn = true;
+		isTimeCaptured = false;
+	}
+	else
+	if(EnemyAttackChoice === 4)
+	{
+		if(enemyHealth <= 75)
+		{
+			enemyHealth = enemyHealth + 25;
+			document.getElementById("TurnHUD").innerHTML = "Enemy Healed, Your Turn";			
+
+		}
+		else
+		{
+			document.getElementById("TurnHUD").innerHTML = "Your Turn";			
+		}
+		playersTurn = true;
+		isTimeCaptured = false;
+	}
+	else
+	if(EnemyAttackChoice === 5)
+	{
+		document.getElementById("TurnHUD").innerHTML = "Enemy Missed, Your Turn";			
 		playersTurn = true;
 		isTimeCaptured = false;
 	}
@@ -254,6 +310,28 @@ function playButtonClick()
 	else
 	{
 		mySound.currentTime = 0;
+	}
+}
+
+
+//Update Button Text for  relivent info
+function UpdateButtons()
+{
+	document.getElementById("FirstAttackButton").innerHTML = "Fists - 75% Hit - 5 Damage";
+	document.getElementById("SecondAttackButton").innerHTML = "Dagger - 50% Hit - 15 Damage";
+	document.getElementById("TurnHUD").innerHTML = "Your Turn";
+
+	if(weaponOfChoice === "Wizard")
+	{
+		document.getElementById("ThirdAttackButton").innerHTML = "Fire Spell - 40% Hit - 25 Damage";
+	}
+	else if (weaponOfChoice === "Archer")
+	{
+		document.getElementById("ThirdAttackButton").innerHTML = "Bow Shot - 40% Hit - 25 Damage";
+	}
+	else if (weaponOfChoice === "Swordsman")
+	{
+		document.getElementById("ThirdAttackButton").innerHTML = "Sword swing - 40% Hit - 25 Damage";
 	}
 }
 
