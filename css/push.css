@@ -1,10 +1,8 @@
-@media only screen and (max-width: 600px) {
-	#game{
-		width:90%;
-		height:70%;
-	}
-	
-	body{
+@media only screen and (max-width: 700px)
+ {	
+	body
+	{
+		width:100%;
 		padding-top: 50%;
 		position: relative;
 		display: table-cell;
@@ -61,6 +59,11 @@ input[type=radio] {
 
 html, body {
     height: 100%;
+}
+
+#game{
+	width: 600px;
+	height: 450px;
 }
 
 html {
