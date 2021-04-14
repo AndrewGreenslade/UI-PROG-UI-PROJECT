@@ -62,7 +62,13 @@ document.getElementById("ThirdAttackButton").addEventListener("touchend", Button
 document.getElementById("HealButton").addEventListener("touchstart", HealButton, {passive: true});
 document.getElementById("HealButton").addEventListener("touchend", ButtonUp, {passive: true});
 
-var mySound = document.getElementById("sound");   
+var mySound = new Audio('./audio/ButtonPress.mp3');  
+var BackgroundTrack = new Audio('./audio/BackgroundTrackFinal.mp3');  
+var ArrowTrack = new Audio('./audio/ArrowFInal.mp3');
+var MagicFireTrack = new Audio('./audio/MagicFinal.mp3');
+var FistsTrack = new Audio('./audio/PunchFInal.mp3');
+var SwordTrack = new Audio('./audio/Sword.wav');
+var KnifeTrack = new Audio('./audio/Knife.wav');
 
 function FirstAttackButton()
 {
@@ -70,6 +76,8 @@ function FirstAttackButton()
 	{
 		if(enemyHealth > 0)
 		{
+			playButtonClick(1);
+			
 			PlayerChoiceRandomVal = Math.floor((Math.random() * 100) + 1);
 			
 			if(PlayerChoiceRandomVal <= 75)
@@ -93,6 +101,8 @@ function SecondAttackButton()
 	{
 		if(enemyHealth > 0)
 		{
+			playButtonClick(2);
+			
 			PlayerChoiceRandomVal = Math.floor((Math.random() * 100) + 1);
 
 			if(PlayerChoiceRandomVal <= 50)
@@ -116,6 +126,19 @@ function ThirdAttackButton()
 	{
 		if(enemyHealth > 0)
 		{
+			if(weaponOfChoice === "Wizard")
+			{
+				playButtonClick(3);
+			}
+			else if (weaponOfChoice === "Archer")
+			{
+				playButtonClick(4);
+			}
+			else if (weaponOfChoice === "Swordsman")
+			{
+				playButtonClick(5);
+			}
+			
 			PlayerChoiceRandomVal = Math.floor((Math.random() * 100) + 1);
 			if(PlayerChoiceRandomVal <= 40)
 			{
@@ -223,7 +246,6 @@ function update()
 	{
 		gameover = true;
 	}
-
 }
 
 function drawPlayerHealthbar()
@@ -299,20 +321,37 @@ function gameloop()
 }
 
 //function for playing audio
-function playButtonClick()
+function playButtonClick(WhichClipArgs)
 {
-	//if sound is finished, play
-	if(mySound.paused)
+	if(WhichClipArgs === 1)
 	{
-		mySound.play();
+		var playPromise = FistsTrack.play();
 	}
-	//else if not finished reset to start of audio 
-	else
+	else if(WhichClipArgs === 2)
 	{
-		mySound.currentTime = 0;
+		var playPromise = KnifeTrack.play();
 	}
+	else if(WhichClipArgs === 3)
+	{
+		var playPromise = MagicFireTrack.play();
+	}
+	else if(WhichClipArgs === 4)
+	{
+		var playPromise = ArrowTrack.play();
+	}
+	else if(WhichClipArgs === 5)
+	{
+		var playPromise = SwordTrack.play();
+	}
+	
 }
 
+//function for playing audio
+function playBGTrack()
+{
+	var playPromise = BackgroundTrack.play();
+	playPromise.loop = true;
+}
 
 //Update Button Text for  relivent info
 function UpdateButtons()

@@ -27,26 +27,29 @@
 </head>
 
 <body onload="onPageLoad()">
+	
+	<audio src="./audio/BackgroundTrackFinal.mp3" loop="true" controls>
+	<p>If you are reading this, it is because your browser does not support the audio element.</p>
+	</audio>
+
 	<h1 id="WelcomeName"> </h1>
 	<h1 id="HUD"> </h1>
 	<h1 id="TurnHUD"> </h1>
+	
+
 	
 	<canvas tabindex="0" id="game" width="900" height="700" style="border: black 1px solid;">
         Oops! looks like your browser does not support canvas tag
     </canvas>
 	<br>
+    
 	
-	<audio id="sound">   
-		<source src="audio/ButtonPress.mp3">   
-		Your browser does not support the audio element.
-	</audio> 
-
     <table class="CenterAlign">
         <tbody>
             <tr>
-                <td><button onmousedown="FirstAttackButton()" onclick="playButtonClick()" id="FirstAttackButton" class="button RedOne">Attack One</button></td>
-                <td><button onmousedown="SecondAttackButton()" onclick="playButtonClick()" id="SecondAttackButton" class="button RedTwo">Attack Two</button></td>
-                <td><button onmousedown="ThirdAttackButton()" onclick="playButtonClick()" id="ThirdAttackButton" class="button RedThree">Attack Three</button></td>
+                <td><button onmousedown="FirstAttackButton()" id="FirstAttackButton" class="button RedOne">Attack One</button></td>
+                <td><button onmousedown="SecondAttackButton()" id="SecondAttackButton" class="button RedTwo">Attack Two</button></td>
+                <td><button onmousedown="ThirdAttackButton()" id="ThirdAttackButton" class="button RedThree">Attack Three</button></td>
             </tr>
 			<tr>
                 <td>&nbsp;</td>
@@ -60,6 +63,8 @@
 			</tr>
         </tbody>
     </table>
+	
+	
 </body>
 
 <script src="./js/script.js"></script>

@@ -2,7 +2,7 @@
  {	
 	body
 	{
-		width:100%;
+		max-width: 80%;
 		padding-top: 50%;
 		position: relative;
 		display: table-cell;
