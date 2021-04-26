@@ -11,17 +11,17 @@
 	}
 	
 	html, body {
-    width: 100%;
+		width: 100%;
 	}
 	
 	.button {
-    background-color: #61584C;
-    box-shadow: 0 9px #505050;
-	height: 200px;
-	width: 100%;
-    font-size: 28px;
-	border-radius: 12px;
-	display: block;
+		background-color: #61584C;
+		box-shadow: 0 9px #505050;
+		height: 100px;
+		width: 100%;
+		font-size: 15px;
+		border-radius: 12px;
+		display: block;
 	}
 	
 	body{
@@ -31,6 +31,7 @@
 		text-align: center;
 		display: table-cell;
 		vertical-align: middle;
+		font-size: 12px;
 	}
 	
 	.button:hover {
