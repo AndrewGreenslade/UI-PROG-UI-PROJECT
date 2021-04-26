@@ -241,7 +241,7 @@ function update()
 
 		}
 	}
-	
+
 	if(enemyHealth < 1)
 	{
 		gameover = true;
@@ -343,7 +343,6 @@ function playButtonClick(WhichClipArgs)
 	{
 		var playPromise = SwordTrack.play();
 	}
-	
 }
 
 //function for playing audio
