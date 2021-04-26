@@ -1,81 +1,135 @@
 @media only screen and (min-device-width : 320px) and (max-device-width : 1000px)
 {	
-	body
-	{
-		width: 80%;
-		padding-top: 50%;
-		position: relative;
-		display: table-cell;
-		vertical-align: bottom;
+	#game {
+		width: 100%;
+		height: 50%%;
 	}
-}
-
-.button {
+	
+	html {
+		display: block;
+		margin: auto;
+	}
+	
+	html, body {
+    width: 100%;
+	}
+	
+	.button {
     background-color: #61584C;
     box-shadow: 0 9px #505050;
-	height: 75px;
-	width: 350px;
+	height: 200px;
+	width: 100%;
     font-size: 28px;
 	border-radius: 12px;
-}
+	display: block;
+	}
+	
+	body{
+		background-color: #C7B29B;
+		color:#61584C;
+		font-family: Papyrus, fantasy;
+		text-align: center;
+		display: table-cell;
+		vertical-align: middle;
+	}
+	
+	.button:hover {
+		background-color: #3F3F3F;
+	}
 
-.button:hover {
-    background-color: #3F3F3F;
-}
+	.button:active {
+		box-shadow: 0 5px #3D3D3D;
+		transform: translateY(5px);
+	}
 
-.button:active {
-    box-shadow: 0 5px #3D3D3D;
-    transform: translateY(5px);
-}
+	.Green {
+		color: #50F566;
+	}
+	.RedThree {
+		color: #F5829C;
+	}
 
-.Green {
-	color: #50F566;
-}
-.RedThree {
-    color: #F5829C;
-}
+	.RedTwo {
+		color: #FF403C;
+	}
 
-.RedTwo {
-	color: #FF403C;
+	.RedOne {
+		color: #D40C00;
+	}
+	
+	input[type=radio] {
+		height: 20px;
+	}
 }
+@media only screen and (min-device-width : 1001px)
+{
+	.button {
+		background-color: #61584C;
+		box-shadow: 0 9px #505050;
+		height: 75px;
+		width: 350px;
+		font-size: 28px;
+		border-radius: 12px;
+	}
 
-.RedOne {
-    color: #D40C00;
-}
+	.button:hover {
+		background-color: #3F3F3F;
+	}
 
-.CenterAlign {
-	display: inline-flex;
-	align-items:center;
-}
+	.button:active {
+		box-shadow: 0 5px #3D3D3D;
+		transform: translateY(5px);
+	}
 
-.CenterAlignButton {
-	align-items:center;
-	text-align:center;
-}
+	.Green {
+		color: #50F566;
+	}
+	.RedThree {
+		color: #F5829C;
+	}
 
-input[type=radio] {
-    height: 20px;
-}
+	.RedTwo {
+		color: #FF403C;
+	}
 
-html, body {
-    height: 100%;
-}
+	.RedOne {
+		color: #D40C00;
+	}
 
-#game{
-	width: 600px;
-	height: 450px;
-}
+	.CenterAlign {
+		display: inline-flex;
+		align-items:center;
+	}
 
-html {
-    display: table;
-    margin: auto;
-}
+	.CenterAlignButton {
+		align-items:center;
+		text-align:center;
+	}
 
-body{
-	background-color: #C7B29B;
-	color:#61584C;
-	font-family: Papyrus, fantasy;
-	text-align: center;
-    display: table-cell;
-    vertical-align: middle;
+	input[type=radio] {
+		height: 20px;
+	}
+
+	html, body {
+		height: 100%;
+	}
+
+	#game{
+		width: 600px;
+		height: 450px;
+	}
+
+	html {
+		display: table;
+		margin: auto;
+	}
+
+	body{
+		background-color: #C7B29B;
+		color:#61584C;
+		font-family: Papyrus, fantasy;
+		text-align: center;
+		display: table-cell;
+		vertical-align: middle;
+	}
 }
